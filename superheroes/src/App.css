@@ -19,7 +19,6 @@ h1{
   color: #00fff2;
   font-size: 3rem;
   margin-bottom: 30px;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
 }
 .search-box{
   display: flex;
@@ -40,7 +39,7 @@ h1{
   padding: 12px 30px;
   border: none;
   border-radius: 8px;
-  background: rgb(60, 121, 212);;
+  background: rgb(60, 121, 212);
   color: white;
   font-size: 16px;
   font-weight: bold;
@@ -49,21 +48,20 @@ h1{
   box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 .search-box button:hover{
-  background: rgb(60, 121, 212);;
+  background: rgb(60, 121, 212);
   transform: translateY(-2px);
   box-shadow: 0 6px 8px rgba(0,0,0,0.15);
 }
 .loading, .error{
-  color: #fff;
-  font-size: 1.2rem;
+  color: #ffffff;
+  font-size: 1.5rem;
+  font-weight: 10;
   margin: 20px 0;
   padding: 15px;
   background: rgba(255,255,255,0.1);
   border-radius: 8px;
 }
-.error{
-  background: rgba(255,107,107,0.3);
-}
+
 .cards-grid{
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -89,16 +87,6 @@ h1{
   color: #ffffff;
   font-size: 1.5rem;
   margin-bottom: 10px;
-}
-.alignment-badge{
-  display: inline-block;
-  padding: 5px 15px;
-  border-radius: 20px;
-  color: white;
-  font-weight: bold;
-  font-size: 0.85rem;
-  margin-bottom: 15px;
-  text-transform: uppercase;
 }
 .card p{
   color: #ffffff;

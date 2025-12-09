@@ -9,7 +9,6 @@ export default function Home(){
     const [errorMsg, setErrorMsg] = useState("");
     const [allHeroes, setAllHeroes] = useState([]);
 
-
     useEffect(() => {
         loadAllHeroes();
     }, []);
@@ -25,7 +24,6 @@ export default function Home(){
             
             if(response.data && response.data.length > 0){
                 setAllHeroes(response.data);
-
                 setCharacters(response.data.slice(0, 700));
             }else{
                 setErrorMsg("Não foi possível carregar os heróis.");
@@ -38,7 +36,9 @@ export default function Home(){
     }
 
     async function handleSearch(){
-        if(!searchId || searchId < 1 || searchId > 731){
+        const id = searchId.trim();
+        
+        if(!id || id < 1 || id > 731){
             setErrorMsg("Digite um ID válido (1-731)");
             return;
         }
@@ -48,7 +48,7 @@ export default function Home(){
 
         try{
             const response = await axios.get(
-                `https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/id/${searchId}.json`
+                `https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/id/${id}.json`
             );
             
             if(response.data){
@@ -67,25 +67,14 @@ export default function Home(){
 
     function handleShowAll(){
         if(allHeroes.length > 0){
-            setCharacters(allHeroes.slice(0, 12));
+            setCharacters(allHeroes.slice(0, 700));
             setSearchId("");
             setErrorMsg("");
         }
     }
-
-    function handleRandomHero(){
-        if(allHeroes.length > 0){
-            const randomIndex = Math.floor(Math.random() * allHeroes.length);
-            setCharacters([allHeroes[randomIndex]]);
-            setSearchId("");
-            setErrorMsg("");
-        }
-    }
-
     return(
         <div className="container">
             <h1>Super Heroes</h1>
-
             <div className="search-box">
                 <input
                     type="number" 
@@ -96,10 +85,8 @@ export default function Home(){
                 <button onClick={handleSearch}>Buscar</button>
                 <button onClick={handleShowAll}>Mostrar Todos</button>
             </div>
-
             {loading && <p className="loading">Carregando...</p>}
             {errorMsg && <p className="error">{errorMsg}</p>}
-
             <div className="cards-grid">
                 {characters.map((char) => (
                     <Card
